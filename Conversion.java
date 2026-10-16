@@ -21,31 +21,43 @@ public class Conversion {
 		
 		System.out.println("Welcome to the currency converter!");
 		
-		System.out.println("Would you like to convert (U)SD or (B)olivares?");
+		while (true) {
+			
+			System.out.println("Would you like to convert (U)SD or (B)olivares or (E)xit? ");
+			
+			String rawAnswer = scan.nextLine();
+			
+			if (rawAnswer.isEmpty()) {
+				continue;
+			}
+			
+			String processedAnswer = rawAnswer.toLowerCase();
+			
+			char choice = processedAnswer.charAt(0);
+			
+			if (choice == 'u') {
+				
+				System.out.println("How many USD do you want to convert?");
+				
+				double currency = scan.nextDouble();
+				scan.nextLine();
+				
+				System.out.println("You have " + convertUSD(currency) + " Bolivares!");
+			} else if (choice == 'b') {
+				
+				System.out.println("How many Bolivares do you want to convert?");
+				
+				double currency = scan.nextDouble();
+				scan.nextLine();
+				
+				System.out.println("You have " + convertBolivares(currency) + " USD!");
+			} else {
+				break;
+			}
 		
-		String rawAnswer = scan.nextLine();
-		
-		String processedAnswer = rawAnswer.toLowerCase();
-		
-		char choice = processedAnswer.charAt(0);
-		
-		if (choice == 'u') {
-			
-			System.out.println("How many USD do you want to convert?");
-			
-			double currency = scan.nextDouble();
-			
-			System.out.println("You have " + convertUSD(currency) + " Bolivares!");
-		} else if (choice == 'b') {
-			
-			System.out.println("How many Bolivares do you want to convert?");
-			
-			double currency = scan.nextDouble();
-			
-			System.out.println("You have " + convertBolivares(currency) + " Bolivares!");
-		} else {
-			System.out.println("Hope you have a nice day!");
 		}
+		
+		System.out.println("Hope you have a nice day!");
 		
 		scan.close();
 
